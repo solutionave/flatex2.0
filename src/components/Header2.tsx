@@ -1,9 +1,12 @@
+"use client";
 import React, { useContext, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import Image from "next/image";
 import logo from "../../public/images/logo.png";
-import { TimeContext } from "../providers/TimeProvider";
 import Link from "next/link";
+import { TimeContext } from "../Provider/TimeProvider";
+
 
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -18,6 +21,7 @@ const Header = () => {
     <nav className="flex justify-between items-center bg-[#2c2a2b] p-4 text-white lg:px-40">
       {/* Logo */}
       <div className="flex justify-center items-center">
+
         <img
           src="/images/logo.png"
           className="h-10 sm:h-12 w-auto"
