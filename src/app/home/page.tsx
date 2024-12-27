@@ -8,6 +8,7 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 const Home = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [isChecked1, setIsChecked1] = useState(false);
+  console.log("data");
   const accounts = [
     {
       name: "***774 Depot - Daniel Mehner",
