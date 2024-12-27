@@ -1,9 +1,8 @@
 "use client";
-
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import Link from "next/link";
 
 const Navbar = ({ activeItem = "", setActiveItem = (item: string) => {} }) => {
   const [isOpen, setIsOpen] = useState(false);

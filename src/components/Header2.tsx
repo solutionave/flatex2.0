@@ -7,6 +7,7 @@ import logo from "../../public/images/logo.png";
 import Link from "next/link";
 import { TimeContext } from "../Provider/TimeProvider";
 
+
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -20,7 +21,12 @@ const Header = () => {
     <nav className="flex justify-between items-center bg-[#2c2a2b] p-4 text-white lg:px-40">
       {/* Logo */}
       <div className="flex justify-center items-center">
-        <Image src={logo} className="h-10 sm:h-12 w-auto" alt="Logo" />
+
+        <img
+          src="/images/logo.png"
+          className="h-10 sm:h-12 w-auto"
+          alt="Logo"
+        />
       </div>
 
       {/* Right Section: Search Bar and Logout */}
