@@ -77,11 +77,11 @@ const Home = () => {
         {/* Chat Icon */}
         <div
           ref={bannerRef}
-          className="fixed flex justify-center items-center lg:w-[37%] lg:left-1/2 lg:-translate-x-1/2 bottom-0 left-0 right-0 shadow-white bg-white px-2 py-1 mb-10"
+          className="fixed flex justify-center items-center lg:w-[33%] lg:left-1/2 lg:-translate-x-1/2 bottom-0 left-0 right-0 shadow-white bg-white px-2 py-1 mb-10"
         >
-          <div className="text-black py-3 relative">
+          <div className="text-black py-4 relative">
             <button
-              className="absolute -top-2 right-0 lg:-right-7 text-3xl text-gray-600 hover:text-gray-800"
+              className="absolute -top-2 right-0 lg:-right- text-3xl text-gray-600 hover:text-gray-800"
               onClick={() =>
                 bannerRef.current && (bannerRef.current.style.display = "none")
               }

@@ -76,184 +76,186 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-[#2c2a2b] text-white px-5 py-2 lg:px-12 lg:py-5 flex items-center justify-between sticky">
+    <nav className="bg-[#2c2a2b] text-white px-5 py-4 lg:px-10 lg:py-5 flex items-center justify-between sticky">
       {/* Logo */}
-      <div className="flex justify-center gap-28">
+      <div className="flex justify-center gap-2 lg:gap-28 ">
         <div className="flex justify-center items-center ">
           <img src="/images/logo.png" className="lg:px-2 lg:h-12 w-auto" />
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center text-xl font-semibold space-x-8">
-          <li>
-            <button className="hover:text-orange-400">
-              <Link href="/Unsere">Preise</Link>
-            </button>
-          </li>
-
-          <li>
-            <Link href="/Unsere">
-              <button className="hover:text-orange-400">Aktionen</button>
-            </Link>
-          </li>
-
-          <li className="relative">
-            <button
-              onClick={() => handleDropdownToggle("produkte")}
-              className="flex items-center hover:text-orange-400"
-            >
-              Produkte & Handel
-              <RiArrowDropDownLine className="ml-1" size={24} />
-            </button>
-            {openDropdown === "produkte" && (
-              <Link href="/Unsere">
-                <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
-                  {[
-                    "Aktien",
-                    "Sparpläne",
-                    "ETFs",
-                    "Fonds",
-                    "Zertifikate & Hebelprodukte",
-                    "Anleihen",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="px-4 py-2 hover:bg-orange-100"
-                      onClick={() => handleOptionClick(item)}
-                    >
-                      <button className="block w-full text-left">{item}</button>
-                    </li>
-                  ))}
-                </ul>
-              </Link>
-            )}
-          </li>
-
-          <li className="relative">
-            <button
-              onClick={() => handleDropdownToggle("plattformen")}
-              className="flex items-center hover:text-orange-400"
-            >
-              Plattformen
-              <RiArrowDropDownLine className="ml-1" size={24} />
-            </button>
-            <Link href="/Unsere">
-              {openDropdown === "plattformen" && (
-                <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
-                  {[
-                    "Flatex next",
-                    "Flatex classic",
-                    "Flatex Trader 2.0",
-                    "Stock 3",
-                    "Produktfinder",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="px-4 py-2 hover:bg-orange-100"
-                      onClick={() => handleOptionClick(item)}
-                    >
-                      <button className="block w-full text-left">{item}</button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Link>
-          </li>
-
-          <li className="relative">
-            <button
-              onClick={() => handleDropdownToggle("boersenwissen")}
-              className="flex items-center hover:text-orange-400"
-            >
-              Börsenwissen
-              <RiArrowDropDownLine className="ml-1" size={24} />
-            </button>
-            <Link href="/Unsere">
-              {openDropdown === "boersenwissen" && (
-                <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
-                  {[
-                    "Online-Seminare",
-                    "Wissenszentrum",
-                    "Markt-Update",
-                    "TV-Dokumentation",
-                    "Podcast",
-                    "Aktien und Indizes",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="px-4 py-2 hover:bg-orange-100"
-                      onClick={() => handleOptionClick(item)}
-                    >
-                      <button className="block w-full text-left">{item}</button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Link>
-          </li>
-
-          <li className="relative">
-            <button
-              onClick={() => handleDropdownToggle("service")}
-              className="flex items-center hover:text-orange-400"
-            >
-              Service
-              <RiArrowDropDownLine className="ml-1" size={24} />
-            </button>
-            <Link href="/Unsere">
-              {openDropdown === "service" && (
-                <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
-                  {[
-                    "Erste Schritte",
-                    "Häufige Fragen – FAQs",
-                    "Formulare",
-                    "Beschwerden",
-                    "Kontakt",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="px-4 py-2 hover:bg-orange-100"
-                      onClick={() => handleOptionClick(item)}
-                    >
-                      <button className="block w-full text-left">{item}</button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Link>
-          </li>
-
-          <li>
-            <div className="flex justify-center relative">
-              <button className="text-white hover:text-orange-400">
-                <svg
-                  className="w-9 h-9 pt-2"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 21l-4.35-4.35M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
-                  />
-                </svg>
+        <div className="flex items-center px-8">
+          <ul className="hidden md:flex items-center text-xl font-semibold space-x-5">
+            <li>
+              <button className="hover:text-orange-400">
+                <Link href="/Unsere">Preise</Link>
               </button>
-            </div>
-          </li>
-        </ul>
+            </li>
+
+            <li>
+              <Link href="/Unsere">
+                <button className="hover:text-orange-400">Aktionen</button>
+              </Link>
+            </li>
+
+            <li className="relative">
+              <button
+                onClick={() => handleDropdownToggle("produkte")}
+                className="flex items-center hover:text-orange-400 whitespace-nowrap"
+              >
+                Produkte & Handel
+                <RiArrowDropDownLine className="ml-1" size={24} />
+              </button>
+              {openDropdown === "produkte" && (
+                <Link href="/Unsere">
+                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
+                    {[
+                      "Aktien",
+                      "Sparpläne",
+                      "ETFs",
+                      "Fonds",
+                      "Zertifikate & Hebelprodukte",
+                      "Anleihen",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="px-4 py-2 hover:bg-orange-100"
+                        onClick={() => handleOptionClick(item)}
+                      >
+                        <button className="block w-full text-left">{item}</button>
+                      </li>
+                    ))}
+                  </ul>
+                </Link>
+              )}
+            </li>
+
+            <li className="relative">
+              <button
+                onClick={() => handleDropdownToggle("plattformen")}
+                className="flex items-center hover:text-orange-400"
+              >
+                Plattformen
+                <RiArrowDropDownLine className="ml-1" size={24} />
+              </button>
+              <Link href="/Unsere">
+                {openDropdown === "plattformen" && (
+                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
+                    {[
+                      "Flatex next",
+                      "Flatex classic",
+                      "Flatex Trader 2.0",
+                      "Stock 3",
+                      "Produktfinder",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="px-4 py-2 hover:bg-orange-100"
+                        onClick={() => handleOptionClick(item)}
+                      >
+                        <button className="block w-full text-left">{item}</button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </Link>
+            </li>
+
+            <li className="relative">
+              <button
+                onClick={() => handleDropdownToggle("boersenwissen")}
+                className="flex items-center hover:text-orange-400"
+              >
+                Börsenwissen
+                <RiArrowDropDownLine className="ml-1" size={24} />
+              </button>
+              <Link href="/Unsere">
+                {openDropdown === "boersenwissen" && (
+                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
+                    {[
+                      "Online-Seminare",
+                      "Wissenszentrum",
+                      "Markt-Update",
+                      "TV-Dokumentation",
+                      "Podcast",
+                      "Aktien und Indizes",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="px-4 py-2 hover:bg-orange-100"
+                        onClick={() => handleOptionClick(item)}
+                      >
+                        <button className="block w-full text-left">{item}</button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </Link>
+            </li>
+
+            <li className="relative">
+              <button
+                onClick={() => handleDropdownToggle("service")}
+                className="flex items-center hover:text-orange-400"
+              >
+                Service
+                <RiArrowDropDownLine className="ml-1" size={24} />
+              </button>
+              <Link href="/Unsere">
+                {openDropdown === "service" && (
+                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
+                    {[
+                      "Erste Schritte",
+                      "Häufige Fragen – FAQs",
+                      "Formulare",
+                      "Beschwerden",
+                      "Kontakt",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="px-4 py-2 hover:bg-orange-100"
+                        onClick={() => handleOptionClick(item)}
+                      >
+                        <button className="block w-full text-left">{item}</button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </Link>
+            </li>
+
+            <li>
+              <div className="flex justify-center relative">
+                <button className="text-white hover:text-orange-400">
+                  <svg
+                    className="w-9 h-9 pt-2"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-4.35-4.35M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* Login */}
       <div
-        className="hidden md:flex items-center space-x-4 mr-7"
+        className="hidden md:flex items-center space-x-4"
         onClick={handleOpenModal}
       >
         {/* Login */}
         <button className="flex items-center font-semibold text-xl space-x-1 hover:text-orange-400">
-          <div className="px-2">Login</div>
+          <div className="px-1">Login</div>
           <div className="text-orange-400 text-2xl">
             <RxPerson />
           </div>
@@ -343,7 +345,7 @@ const Header = () => {
 
               <div>
                 {username1 === "1045875" && password1 === "Swordfish" ? (
-                  <Link href="/Konten">
+                  <Link href="/Kontent">
                     {/* Login button */}
                     <button
                       type="submit"
@@ -451,42 +453,44 @@ const Header = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <ul className="fixed inset-0 top-16 bg-[#2c2a2b] -mt-3 text-white text-xl text-end px-5 space-y-4 py-4 md:hidden z-50">
-          <li>
-            <a href="#preise" className="block hover:text-orange-400 py-4">
-              Preise
-            </a>
-          </li>
-          <li>
-            <a href="#aktionen" className="block hover:text-orange-400 py-4">
-              Aktionen
-            </a>
-          </li>
-          <li>
-            <a
-              href="#produkte"
-              className="block hover:text-orange-400 py-4 whitespace-nowrap"
-            >
-              Produkte & Handel
-            </a>
-          </li>
-          <li>
-            <a href="#plattformen" className="block hover:text-orange-400 py-4">
-              Plattformen
-            </a>
-          </li>
-          <li>
-            <a
-              href="#börsenwissen"
-              className="block hover:text-orange-400 py-4"
-            >
-              Börsenwissen
-            </a>
-          </li>
-          <li>
-            <a href="#service" className="block hover:text-orange-400 py-4">
-              Service
-            </a>
-          </li>
+          <Link href="/Unsere">
+            <li>
+              <a href="#preise" className="block hover:text-orange-400 py-4">
+                <Link href="/Unsere">Preise</Link>
+              </a>
+            </li>
+            <li>
+              <a href="#aktionen" className="block hover:text-orange-400 py-4">
+                <Link href="/Unsere">Aktionen</Link>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#produkte"
+                className="block hover:text-orange-400 py-4 whitespace-nowrap"
+              >
+                Produkte & Handel
+              </a>
+            </li>
+            <li>
+              <a href="#plattformen" className="block hover:text-orange-400 py-4">
+                Plattformen
+              </a>
+            </li>
+            <li>
+              <a
+                href="#börsenwissen"
+                className="block hover:text-orange-400 py-4"
+              >
+                Börsenwissen
+              </a>
+            </li>
+            <li>
+              <a href="#service" className="block hover:text-orange-400 py-4">
+                Service
+              </a>
+            </li>
+          </Link>
           <li className="flex justify-center items-center pt-8">
             {/* Login Button */}
             <button
@@ -496,6 +500,7 @@ const Header = () => {
               Login
             </button>
           </li>
+
         </ul>
       )}
     </nav>

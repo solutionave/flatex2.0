@@ -83,11 +83,11 @@ const Unsere = () => {
           </button>
         </div>
 
-        <div className=" absolute ab md:flex text-orange-500 mb-16 lg:py-16 font-bold items-center text-9xl">
+        <div className=" absolute ab md:flex text-orange-500 mb-24 lg:mb-0 lg:py-16 font-bold items-center text-9xl">
           +
         </div>
 
-        <div className="flex flex-col items-start text-left py-12 px-5 bg-white shadow-lg w-full lg:w-[40%] border border-gray-200">
+        <div className="flex flex-col items-start text-left py-16 px-5 bg-white shadow-lg w-full lg:w-[40%] border border-gray-200">
           <h2 className="text-3xl font-bold text-gray-800 mb-4 px-5">
             Kunden werben Kunden
           </h2>

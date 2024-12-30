@@ -54,22 +54,20 @@ const Zugrif = () => {
         <div className="flex flex-col sm:flex-row w-full ">
           {/* Kontoinhaber Button */}
           <button
-            className={`px-4 py-2 sm:px-8 w-full sm:w-[50%] ${
-              activeButton === "Kontoinhaber"
-                ? "bg-orange-500 text-white"
-                : "bg-[#2c2a2b] text-gray-200"
-            }`}
+            className={`px-4 py-2 sm:px-8 w-full sm:w-[50%] ${activeButton === "Kontoinhaber"
+              ? "bg-orange-500 text-white"
+              : "bg-[#2c2a2b] text-gray-200"
+              }`}
             onClick={() => setActiveButton("Kontoinhaber")}
           >
             Kontoinhaber
           </button>
           {/* Bevollmächtigte Button */}
           <button
-            className={`py-2 sm:px-8 w-full sm:w-[50%] ${
-              activeButton === "Bevollmachtigte"
-                ? "bg-orange-500 text-white"
-                : "bg-[#2c2a2b] text-gray-200"
-            }`}
+            className={`py-2 sm:px-8 w-full sm:w-[50%] ${activeButton === "Bevollmachtigte"
+              ? "bg-orange-500 text-white"
+              : "bg-[#2c2a2b] text-gray-200"
+              }`}
             onClick={() => setActiveButton("Bevollmachtigte")}
           >
             Bevollmächtigte
@@ -98,14 +96,14 @@ const Zugrif = () => {
             <div className="flex flex-col py-1">
               <p className="text-gray-700">
                 Kundennummer
-                <p className="text-black font-bold">1045875</p>
               </p>
+              <p className="text-black font-bold">1045875</p>
             </div>
             <div className="flex flex-col py-1">
               <p className="text-gray-700">
                 Geburtstag
-                <p className="text-black font-bold">05.12.1984</p>
               </p>
+              <p className="text-black font-bold">05.12.1984</p>
             </div>
             <div className="flex justify-between items-center py-1">
               <div>
@@ -121,16 +119,16 @@ const Zugrif = () => {
             <div className="flex flex-col py-1">
               <p className="text-gray-700">
                 Steuerstatus
-                <p className="text-black font-bold">Steuerinländer</p>
               </p>
+              <p className="text-black font-bold ">Steuerinländer</p>
             </div>
             <div className="flex justify-between items-center py-1">
               <div>
                 <p className="text-gray-700">
                   Steuer-ID
-                  <span className="block font-semibold text-black">
-                    Deutschland | 81099452373
-                  </span>
+                </p>
+                <p className="block font-semibold text-black">
+                  Deutschland | 81099452373
                 </p>
               </div>
               <button className="text-gray-500 hover:text-gray-800">
@@ -152,22 +150,22 @@ const Zugrif = () => {
             <div className="flex flex-col py-1">
               <p className="text-gray-700">
                 Berufsgruppe
-                <p className="text-black font-bold">Selbständige(r)</p>
               </p>
+              <p className="text-black font-bold">Selbständige(r)</p>
             </div>
             <div className="flex flex-col py-1">
               <p className="text-gray-700">
                 Branche
-                <p className="text-black font-bold">
-                  Landwirtschaft, Jagd und damit verbundene Tätigkeiten
-                </p>
+              </p>
+              <p className="text-black font-bold">
+                Landwirtschaft, Jagd und damit verbundene Tätigkeiten
               </p>
             </div>
             <div className="flex flex-col py-1">
               <p className="text-gray-700">
                 Beruf
-                <p className="text-black font-bold">Unternehmer</p>
               </p>
+              <p className="text-black font-bold">Unternehmer</p>
             </div>
           </div>
 
@@ -177,10 +175,10 @@ const Zugrif = () => {
               <div>
                 <p className="text-gray-700">
                   Stammadresse
-                  <span className="block text-black font-bold">Jüdenhof 6</span>
-                  <span className="text-gray-700">01067 Dresden</span>
-                  <p className="text-gray-700">Deutschland</p>
                 </p>
+                <p className="block text-black font-bold">Jüdenhof 6</p>
+                <p className="text-gray-700">01067 Dresden</p>
+                <p className="text-gray-700">Deutschland</p>
               </div>
               <button className="text-gray-500 hover:text-gray-800">
                 <FaPencilAlt className="h-3 w-3 text-orange-500" />
@@ -191,12 +189,12 @@ const Zugrif = () => {
               <div>
                 <p className="text-gray-700">
                   Postadresse
-                  <span className="block text-black font-bold">
-                    Hauptstr. 23
-                  </span>
-                  <span className="text-gray-700">65614 Beselich</span>
-                  <p className="text-gray-700">Deutschland</p>
                 </p>
+                <p className="block text-black font-bold">
+                  Hauptstr. 23
+                </p>
+                <p className="text-gray-700">65614 Beselich</p>
+                <p className="text-gray-700">Deutschland</p>
               </div>
               <div className="flex space-x-2">
                 <button className="text-gray-500 hover:text-gray-800">
@@ -212,10 +210,10 @@ const Zugrif = () => {
               <div>
                 <p className="text-gray-700">
                   Privatkontakt
-                  <span className="block text-black font-bold">Telefon</span>
-                  <span className="text-gray-700">+491775804235</span>
-                  <p className="text-gray-700">Mobil</p>
                 </p>
+                <p className="block text-black font-bold">Telefon</p>
+                <p className="text-gray-700">+491775804235</p>
+                <p className="text-gray-700">Mobil</p>
               </div>
               <div className="flex space-x-2">
                 <button className="text-gray-500 hover:text-gray-800">
