@@ -452,41 +452,39 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <ul className="fixed inset-0 top-16 bg-[#2c2a2b] -mt-3 text-white text-xl text-end px-5 space-y-4 py-4 md:hidden z-50">
+        <ul className="fixed inset-0 top-16 bg-[#2c2a2b] -mt-3 text-white text-xl text-end px-5 space-y-4 py-10 md:hidden z-50">
           <Link href="/Unsere">
             <li>
-              <a href="#preise" className="block hover:text-orange-400 py-4">
+              <a className="block hover:text-orange-400 py-4">
                 <Link href="/Unsere">Preise</Link>
               </a>
             </li>
             <li>
-              <a href="#aktionen" className="block hover:text-orange-400 py-4">
+              <a className="block hover:text-orange-400 py-4">
                 <Link href="/Unsere">Aktionen</Link>
               </a>
             </li>
             <li>
               <a
-                href="#produkte"
                 className="block hover:text-orange-400 py-4 whitespace-nowrap"
               >
                 Produkte & Handel
               </a>
             </li>
             <li>
-              <a href="#plattformen" className="block hover:text-orange-400 py-4">
+              <a className="block hover:text-orange-400 py-4">
                 Plattformen
               </a>
             </li>
             <li>
               <a
-                href="#börsenwissen"
                 className="block hover:text-orange-400 py-4"
               >
                 Börsenwissen
               </a>
             </li>
             <li>
-              <a href="#service" className="block hover:text-orange-400 py-4">
+              <a className="block hover:text-orange-400 py-4">
                 Service
               </a>
             </li>
