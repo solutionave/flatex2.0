@@ -140,7 +140,7 @@ const Header = () => {
               </button>
               <Link href="/Unsere">
                 {openDropdown === "plattformen" && (
-                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
+                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded whitespace-nowrap">
                     {[
                       "Flatex next",
                       "Flatex classic",
@@ -171,7 +171,7 @@ const Header = () => {
               </button>
               <Link href="/Unsere">
                 {openDropdown === "boersenwissen" && (
-                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
+                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded whitespace-nowrap">
                     {[
                       "Online-Seminare",
                       "Wissenszentrum",
@@ -203,7 +203,7 @@ const Header = () => {
               </button>
               <Link href="/Unsere">
                 {openDropdown === "service" && (
-                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded">
+                  <ul className="absolute left-0 bg-white text-gray-800 shadow-md mt-2 rounded whitespace-nowrap">
                     {[
                       "Erste Schritte",
                       "Häufige Fragen – FAQs",

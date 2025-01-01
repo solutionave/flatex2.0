@@ -79,7 +79,7 @@ const Depot = () => {
           </div>
         </div>
 
-        <hr className="border-t border-gray-200 mt-4 mb-1" />
+        <hr className=" border-gray-200" />
 
         {/* Grid for Portfolio Table */}
         <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth">
