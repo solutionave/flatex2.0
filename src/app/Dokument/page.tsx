@@ -24,16 +24,22 @@ const Dokument = () => {
   };
 
   const handleOpenPdf = () => {
-    window.open('/docs//Bank1.pdf');
+    window.open('/docs//612 09.09.2024 Bankbestätigung_Flatex_DM_1.pdf');
   };
   const handleOpenPdf1 = () => {
     window.open('/docs/Bank2.pdf');
+  };
+  const handleOpenPdf4 = () => {
+    window.open('docs/767 09.09.2024 Bankbestaetigung_Flatex_DM_2.pdf');
   };
   const handleOpenPdf2 = () => {
     window.open('docs/Kauf1.pdf');
   };
   const handleOpenPdf3 = () => {
     window.open('docs/kauf2.pdf');
+  };
+  const handleOpenPdf5 = () => {
+    window.open('docs/767 23.02.2021 Kauf_Gazprom_Daniel_Mehner_I.pdf');
   };
 
   return (
@@ -172,6 +178,25 @@ const Dokument = () => {
               <div className="col-span-1">
                 <input
                   type="checkbox"
+                  id="checkbox-1"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+                // Checked state handled as needed
+                />
+              </div>
+              <div className="col-span-1">767</div>
+              <div className="col-span-3">Cashkonto – Daniel Mehner</div>
+              <div className="col-span-1">02.12.2024</div>
+              <div className="col-span-2">
+                <button onClick={handleOpenPdf4}>Bankbestätigung</button>
+              </div>
+              <div className="col-span-3">Bankbestätigung ausländische Wertpapiere</div>
+              <div className="col-span-1 text-end">10.09.2024</div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-4 p-2 mt-4 text-xs bg-gray-100 min-w-[1200px]">
+              <div className="col-span-1">
+                <input
+                  type="checkbox"
                   id="checkbox-2"
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
                 // Checked state handled as needed
@@ -204,6 +229,25 @@ const Dokument = () => {
               </div>
               <div className="col-span-3">Sammelabrechnung vom 23.02.2021</div>
               <div className="col-span-1 text-end">12.10.2021</div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-4 p-2 mt-4 text-xs bg-gray-100 min-w-[1200px]">
+              <div className="col-span-1">
+                <input
+                  type="checkbox"
+                  id="checkbox-2"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+                // Checked state handled as needed
+                />
+              </div>
+              <div className="col-span-1">612</div>
+              <div className="col-span-3">Cashkonto – Daniel Mehner</div>
+              <div className="col-span-1">04.12.2024</div>
+              <div className="col-span-2">
+                <button onClick={handleOpenPdf5}>Wertpapierabrechnung</button>
+              </div>
+              <div className="col-span-3">Sammelabrechnung vom 23.02.2021</div>
+              <div className="col-span-1 text-end">27.02.2021</div>
             </div>
 
           </div>
