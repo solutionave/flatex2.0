@@ -69,16 +69,16 @@ const Konten = () => {
                     {/* Table Row 1 */}
                     <div className="grid grid-cols-12 gap-4 text-xs mt-4 bg-gray-100 p-2 min-w-[1200px]">
                         <div className="col-span-7">
-                          
+
                             <Link href="/Depot">***774 Depot - Daniel Mehner</Link>
 
 
                         </div>
                         <div className="col-span-2 text-end">
-                            8.309,35 EUR<p>-</p>
+                            590.900 EUR<p>-</p>
                         </div>
                         <div className="col-span-2 text-end">
-                            -<p>4.229,26 EUR</p>
+                            -<p>410.217,17 EUR</p>
                         </div>
                         <div className="col-span-1">
                             <div className="py-2  px-3 mx-5 lg:px-2 m-2 bg-gray-400 text-white lg:mx-7">
