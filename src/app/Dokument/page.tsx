@@ -6,6 +6,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { IoReload } from "react-icons/io5";
 import { Dokumentdata } from "@/shared/data";
+import { useSelector } from "react-redux";
 // import DokumentRow from './DokumentRow'
 
 const handleOpenPdf = () => {
@@ -16,12 +17,11 @@ const Dokument = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [isChecked1, setIsChecked1] = useState(false);
   const [activeItem, setActiveItem] = useState("");
+  const userData = useSelector((state: any) => state.user);
 
   useEffect(() => {
     setActiveItem("Dokument");
   }, []);
-
-  
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -32,25 +32,23 @@ const Dokument = () => {
   };
 
   const handleOpenPdf = () => {
-    window.open('/docs//612 09.09.2024 Bankbestätigung_Flatex_DM_1.pdf');
+    window.open("/docs//612 09.09.2024 Bankbestätigung_Flatex_DM_1.pdf");
   };
   const handleOpenPdf1 = () => {
-    window.open('/docs/Bank2.pdf');
+    window.open("/docs/Bank2.pdf");
   };
   const handleOpenPdf4 = () => {
-    window.open('docs/767 09.09.2024 Bankbestaetigung_Flatex_DM_2.pdf');
+    window.open("docs/767 09.09.2024 Bankbestaetigung_Flatex_DM_2.pdf");
   };
   const handleOpenPdf2 = () => {
-    window.open('docs/Kauf1.pdf');
+    window.open("docs/Kauf1.pdf");
   };
   const handleOpenPdf3 = () => {
-    window.open('docs/kauf2.pdf');
+    window.open("docs/kauf2.pdf");
   };
   const handleOpenPdf5 = () => {
-    window.open('docs/767 23.02.2021 Kauf_Gazprom_Daniel_Mehner_I.pdf');
+    window.open("docs/767 23.02.2021 Kauf_Gazprom_Daniel_Mehner_I.pdf");
   };
-
-  
 
   return (
     <>
@@ -145,29 +143,37 @@ const Dokument = () => {
               <div className="col-span-1 text-end">Gelesen am</div>
             </div>
 
-          {/*Rows */}
+            {/*Rows */}
 
             <div className=" mx-auto mt-5   rounded">
-                {Dokumentdata.map((transaction, index) => (
-                  <div key={index} className="grid grid-cols-12 gap-4 p-2 mt-4 text-xs bg-gray-100 min-w-[1200px]">
-                    <div className="col-span-1">
-                      <input
-                        type="checkbox"
-                        id={`checkbox-${index}`}
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-                      />
-                    </div>
-                    <div className="col-span-1">{transaction.id}</div>
-                    <div className="col-span-3">{transaction.name}</div>
-                    <div className="col-span-1">{transaction.date}</div>
-                    <div className="col-span-2">
-                      <button onClick={transaction.onButtonClick}>{transaction.buttonText}</button>
-                    </div>
-                    <div className="col-span-3">{transaction.description}</div>
-                    <div className="col-span-1 text-end">{transaction.endDate}</div>
+              {Dokumentdata.map((transaction, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-12 gap-4 p-2 mt-4 text-xs bg-gray-100 min-w-[1200px]"
+                >
+                  <div className="col-span-1">
+                    <input
+                      type="checkbox"
+                      id={`checkbox-${index}`}
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+                    />
                   </div>
-                ))}
-              </div>
+                  <div className="col-span-1">{transaction.id}</div>
+                  {/* <div className="col-span-3">{transaction.name}</div> */}
+                  <div className="col-span-3">Cashkonto - {userData.name}</div>
+                  <div className="col-span-1">{transaction.date}</div>
+                  <div className="col-span-2">
+                    <button onClick={transaction.onButtonClick}>
+                      {transaction.buttonText}
+                    </button>
+                  </div>
+                  <div className="col-span-3">{transaction.description}</div>
+                  <div className="col-span-1 text-end">
+                    {transaction.endDate}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

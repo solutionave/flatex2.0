@@ -6,15 +6,22 @@ import Image from "next/image";
 import logo from "../../public/images/logo.png";
 import Link from "next/link";
 import { TimeContext } from "@/providers/TimeProvider";
+import { useDispatch } from "react-redux";
+import { clearUserData } from "../store/slices/userSlice";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const context = useContext(TimeContext);
   if (!context) return null;
   const { timeMinutes, timeSeconds, resetTimer } = context;
   const handleLogout = () => {
     resetTimer && resetTimer();
+    dispatch(clearUserData());
+    router.push("/");
   };
   return (
     <nav className="flex justify-between items-center bg-[#2c2a2b] p-4 text-white lg:px-40">
@@ -45,7 +52,7 @@ const Header = () => {
           onClick={handleLogout} // Call endTime on button click
         >
           <span className="px-1">
-            <Link href="/Logout">Logout</Link>
+            <>Logout</>
           </span>
           <span className="px-2">
             {timeMinutes?.toString().padStart(2, "0")}:
@@ -63,7 +70,7 @@ const Header = () => {
       >
         <span className="px-1">
           {" "}
-          <Link href="/Logout">Logout</Link>
+          <>Logout</>
         </span>
         <div className="w-[1px] h-5 bg-white mx-1"></div>
         <RiArrowDropDownLine />

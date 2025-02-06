@@ -6,9 +6,11 @@ import { FiSearch } from "react-icons/fi";
 import { IoReload } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import Header2 from "../../components/Header2";
+import { useSelector } from "react-redux";
 
 const Depot = () => {
   const currentDate = new Date();
+  const userData = useSelector((state: any) => state.user);
   currentDate.setDate(currentDate.getDate() - 1);
   const formattedDate = currentDate
     .toLocaleDateString("en-GB")
@@ -31,7 +33,7 @@ const Depot = () => {
               {/* Dropdown */}
               <select className="appearance-none text-gray-700 border rounded px-2 py-1 w-full pr-10">
                 <option value="cashkonto">
-                  ***767 Cashkonto - Daniel Mehner
+                  ***767 Cashkonto - {userData.name}
                 </option>
               </select>
               {/* Custom Dropdown Icon */}

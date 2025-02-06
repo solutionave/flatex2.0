@@ -1,21 +1,28 @@
 "use Client";
 import React, { useContext, useState } from "react";
-// import { RiArrowDropDownLine } from "react-icons/ri";
-import logo from "../../public/images/logo.png";
 import { RxPerson } from "react-icons/rx";
 import Modal from "react-modal";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Link from "next/link";
 import InputField from "./InputField";
-// import { TimeContext } from '../providers/TimeProvider';
+import { useDispatch } from "react-redux";
+import { setUserData } from "../store/slices/userSlice";
+import { useRouter } from "next/navigation";
+import { userData } from "@/app/data/userData";
+
 const Header = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isShowModal, setisShowModal] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username1, setUsername1] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({ email, password, username });
@@ -29,20 +36,37 @@ const Header = () => {
     setisShowModal(false);
   };
 
-  const [username1, setUsername1] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const isFormValid = username1.trim() !== "" && password1.trim() !== "";
 
   const handleLogin = () => {
-    // Correct credentials
-    const validUsername = "1045875";
-    const validPassword = "Swordfish";
+    // Find the user matching the entered credentials
+    const user = userData.find(
+      (user) => user.username === username1 && user.password === password1
+    );
 
-    if (username1 === validUsername && password1 === validPassword) {
+    if (user) {
       setErrorMessage("");
-      // Redirect or handle successful login
-      window.location.href = "/Konten"; // Change to routing method if using React Router
+      dispatch(
+        setUserData({
+          name: user.name,
+          username: user.username,
+          email: user.email,
+          isAuthenticated: true,
+          kundennummer: user.kundennummer,
+          geburtstag: user.geburtstag,
+          risikoklasse: user.risikoklasse,
+          steuerstatus: user.steuerstatus,
+          steuernummer: user.steuernummer,
+          berufsgruppe: user.berufsgruppe,
+          branche: user.branche,
+          beruf: user.beruf,
+          stammadresse: user.stammadresse,
+          telefon: user.telefon,
+          mobilfunk: user.mobilfunk,
+          geschaeftskontakt: user.geschaeftskontakt,
+        })
+      );
+      router.push("/Kontent"); // Change to routing method if using React Router
     } else {
       setErrorMessage("Ungültige Anmeldedaten. Bitte versuchen Sie es erneut.");
     }
@@ -122,7 +146,9 @@ const Header = () => {
                         className="px-4 py-2 hover:bg-orange-100"
                         onClick={() => handleOptionClick(item)}
                       >
-                        <button className="block w-full text-left">{item}</button>
+                        <button className="block w-full text-left">
+                          {item}
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -153,7 +179,9 @@ const Header = () => {
                         className="px-4 py-2 hover:bg-orange-100"
                         onClick={() => handleOptionClick(item)}
                       >
-                        <button className="block w-full text-left">{item}</button>
+                        <button className="block w-full text-left">
+                          {item}
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -185,7 +213,9 @@ const Header = () => {
                         className="px-4 py-2 hover:bg-orange-100"
                         onClick={() => handleOptionClick(item)}
                       >
-                        <button className="block w-full text-left">{item}</button>
+                        <button className="block w-full text-left">
+                          {item}
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -216,7 +246,9 @@ const Header = () => {
                         className="px-4 py-2 hover:bg-orange-100"
                         onClick={() => handleOptionClick(item)}
                       >
-                        <button className="block w-full text-left">{item}</button>
+                        <button className="block w-full text-left">
+                          {item}
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -344,8 +376,11 @@ const Header = () => {
               </div>
 
               <div>
-                {username1 === "1045875" && password1 === "Swordfish" ? (
-                  <Link href="/Kontent">
+                {userData.some(
+                  (user) =>
+                    user.username === username1 && user.password === password1
+                ) ? (
+                  <>
                     {/* Login button */}
                     <button
                       type="submit"
@@ -353,7 +388,7 @@ const Header = () => {
                     >
                       Anmelden
                     </button>
-                  </Link>
+                  </>
                 ) : (
                   <button
                     type="button"
@@ -465,28 +500,18 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a
-                className="block hover:text-orange-400 py-4 whitespace-nowrap"
-              >
+              <a className="block hover:text-orange-400 py-4 whitespace-nowrap">
                 Produkte & Handel
               </a>
             </li>
             <li>
-              <a className="block hover:text-orange-400 py-4">
-                Plattformen
-              </a>
+              <a className="block hover:text-orange-400 py-4">Plattformen</a>
             </li>
             <li>
-              <a
-                className="block hover:text-orange-400 py-4"
-              >
-                Börsenwissen
-              </a>
+              <a className="block hover:text-orange-400 py-4">Börsenwissen</a>
             </li>
             <li>
-              <a className="block hover:text-orange-400 py-4">
-                Service
-              </a>
+              <a className="block hover:text-orange-400 py-4">Service</a>
             </li>
           </Link>
           <li className="flex justify-center items-center pt-8">
@@ -498,7 +523,6 @@ const Header = () => {
               Login
             </button>
           </li>
-
         </ul>
       )}
     </nav>
