@@ -48,7 +48,7 @@ const Service = () => {
               actions: [
                 "Bankverbindungen",
                 <Link href="/Zugrif">Zugriffsberechtigte</Link>,
-                "Ertragsauschüttung",
+                "Ertragsausschüttung",
                 "Anlageziele",
               ],
             },

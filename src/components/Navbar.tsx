@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-const Navbar = ({ activeItem = "", setActiveItem = (item: string) => { } }) => {
+const Navbar = ({ activeItem = "", setActiveItem = (item: string) => {} }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -19,10 +19,11 @@ const Navbar = ({ activeItem = "", setActiveItem = (item: string) => { } }) => {
       {/* Desktop View */}
       <ul className="lg:flex flex-wrap justify-center items-center sm:justify-start text-white hidden">
         <li
-          className={`flex flex-row justify-center items-center hover:bg-white hover:border-red-500 hover:text-red-500 px-3 py-4  ${activeItem === "konto"
-            ? "bg-white text-red-500"
-            : "hover:bg-white hover:text-red-500"
-            }`}
+          className={`flex flex-row justify-center items-center hover:bg-white hover:border-red-500 hover:text-red-500 px-3 py-4  ${
+            activeItem === "konto"
+              ? "bg-white text-red-500"
+              : "hover:bg-white hover:text-red-500"
+          }`}
         >
           <div className="relative">
             {/* Dropdown Trigger */}
@@ -63,10 +64,11 @@ const Navbar = ({ activeItem = "", setActiveItem = (item: string) => { } }) => {
         </li>
 
         <button
-          className={`flex flex-row justify-center items-center hover:w-40 px-2 py-4 border-red-300  ${activeItem === "Dokument"
-            ? "bg-white text-red-500 w-32"
-            : "hover:bg-white hover:text-red-500"
-            }`}
+          className={`flex flex-row justify-center items-center hover:w-40 px-2 py-4 border-red-300  ${
+            activeItem === "Dokument"
+              ? "bg-white text-red-500 w-32"
+              : "hover:bg-white hover:text-red-500"
+          }`}
           onClick={() => setIsOpen1(!isOpen1)}
         >
           Post <RiArrowDropDownLine className="text-xl" />
@@ -79,7 +81,7 @@ const Navbar = ({ activeItem = "", setActiveItem = (item: string) => { } }) => {
               className="px-1 py-2 cursor-pointer"
               onClick={() => handleItemClick("Dokument")}
             >
-              <Link href="/Dokument">Dokumentarchiv</Link>
+              <Link href="/Dokument">Dokumentenarchiv</Link>
             </li>
             <li
               className="px-1 py-2 cursor-pointer"
@@ -97,10 +99,11 @@ const Navbar = ({ activeItem = "", setActiveItem = (item: string) => { } }) => {
         )}
         <Link href="/Services">
           <li
-            className={`hidden sm:block cursor-pointer hover:bg-white hover:text-red-500  hover:border-red-300 px-2 py-4 ${activeItem === "Service"
-              ? "bg-white text-red-500 "
-              : "hover:bg-white hover:text-red-500"
-              }`}
+            className={`hidden sm:block cursor-pointer hover:bg-white hover:text-red-500  hover:border-red-300 px-2 py-4 ${
+              activeItem === "Service"
+                ? "bg-white text-red-500 "
+                : "hover:bg-white hover:text-red-500"
+            }`}
             onClick={() => handleItemClick("Service")}
           >
             Service
@@ -176,7 +179,7 @@ const Navbar = ({ activeItem = "", setActiveItem = (item: string) => { } }) => {
               {isOpen1 && (
                 <ul className="absolute right-4 mt-48 w-80 bg-white border border-red-300 shadow-lg text-black">
                   <li className="px-5 py-4 cursor-pointer text-end ">
-                    <Link href="/Dokument">Dokumentarchiv</Link>
+                    <Link href="/Dokument">Dokumentenarchiv</Link>
                   </li>
                   <li className="px-5 py-4 cursor-pointer text-end ">
                     E-Mail-Benachrichtigungen
