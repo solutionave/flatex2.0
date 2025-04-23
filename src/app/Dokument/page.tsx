@@ -58,7 +58,7 @@ const Dokument = () => {
       </div>
       <div className="px-4 pb-6 md:px-16 lg:px-40">
         <div className="text-2xl md:text-3xl lg:mt-8 mt-10">
-          Documentenarchiv
+          Dokumentenarchiv
         </div>
         <div className="flex flex-wrap items-start gap-4 pt-5 mb-4">
           <div className="w-full md:w-auto">
@@ -89,7 +89,7 @@ const Dokument = () => {
 
             <div className="relative w-full my-4 lg:my-0">
               <select className="w-full px-2 py-1 text-gray-700 border appearance-none pr-10">
-                <option value="cashkonto">Alle</option>
+                <option value="cashkonto">Ungelesen</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 bg-gray-400">
                 <FaChevronDown className="text-white cursor-pointer" />
@@ -138,14 +138,14 @@ const Dokument = () => {
               <div className="col-span-1"></div>
               <div className="col-span-3">Konto</div>
               <div className="col-span-1">Datum</div>
-              <div className="col-span-2">Dokumententype</div>
+              <div className="col-span-2">Dokumententyp</div>
               <div className="col-span-3">Beschreibung</div>
               <div className="col-span-1 text-end">Gelesen am</div>
             </div>
 
             {/*Rows */}
 
-            <div className=" mx-auto mt-5   rounded">
+            <div className=" mx-auto mt-5  font-bold rounded">
               {Dokumentdata.map((transaction, index) => (
                 <div
                   key={index}
