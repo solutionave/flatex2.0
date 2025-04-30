@@ -2,7 +2,7 @@ export const Dokumentdata = [
     {
         id: "612",
         name: "Cashkonto – Daniel Mehner",
-        date: "04.12.2024",
+        date: "09.09.2024",
         buttonText: "Bankbestätigung",
         description: "Bankbestätigung ausländische Wertpapiere",
         endDate: "10.09.2024",
@@ -24,7 +24,7 @@ export const Dokumentdata = [
       {
         id: "767",
         name: "Cashkonto – Daniel Mehner",
-        date: "02.12.2024",
+        date: "09.09.2024",
         buttonText: "Bankbestätigung",
         description: "Bankbestätigung ausländische Wertpapiere",
         endDate: "10.09.2024",
@@ -57,7 +57,7 @@ export const Dokumentdata = [
       {
         id: "612",
         name: "Cashkonto – Daniel Mehner",
-        date: "04.12.2024",
+        date: "23.02.2021",
         buttonText: "Wertpapierabrechnung",
         description: "Sammelabrechnung vom 23.02.2021",
         endDate: "27.02.2021",

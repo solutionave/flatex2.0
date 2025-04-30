@@ -24,7 +24,7 @@ const KamilDokument = () => {
     {
       id: "634",
       name: "Cashkonto – Erich Rath",
-      date: "04.12.2024",
+      date: "11.01.2020",
       buttonText: "Wertpapierabrechnung",
       description: "Wertpapierabrechnung ausländische Wertpapiere",
       endDate: "10.09.2024",
@@ -35,7 +35,7 @@ const KamilDokument = () => {
     {
       id: "634",
       name: "Cashkonto – Erich Rath",
-      date: "02.12.2024",
+      date: "25.01.2025",
       buttonText: "Bankbestätigung",
       description: "Bankbestätigung ausländische Wertpapiere",
       endDate: "10.09.2024",
