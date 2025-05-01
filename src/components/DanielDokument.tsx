@@ -5,82 +5,11 @@ import Navbar from "./Navbar";
 import { FaChevronDown } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { IoReload } from "react-icons/io5";
-// import { Dokumentdata } from "@/shared/data";
 import { useSelector } from "react-redux";
-// import DokumentRow from './DokumentRow'
 
 const handleOpenPdf = () => {
   console.log("Opening PDF...");
 };
-
-const Dokumentdata = [
-  {
-    id: "612",
-    name: "Cashkonto – Daniel Mehner",
-    date: "09.09.2024",
-    buttonText: "Bankbestätigung",
-    description: "Bankbestätigung ausländische Wertpapiere",
-    endDate: "10.09.2024",
-    onButtonClick: () => {
-      window.open("/docs/612 09.09.2024 Bankbestätigung_Flatex_DM_1.pdf");
-    },
-  },
-  {
-    id: "767",
-    name: "Cashkonto – Daniel Mehner",
-    date: "02.12.2024",
-    buttonText: "Bankbestätigung",
-    description: "Bankbestätigung ausländische Wertpapiere",
-    endDate: "10.09.2024",
-    onButtonClick: () => {
-      window.open("/docs/Bank2.pdf");
-    },
-  },
-  {
-    id: "767",
-    name: "Cashkonto – Daniel Mehner",
-    date: "09.09.2024",
-    buttonText: "Bankbestätigung",
-    description: "Bankbestätigung ausländische Wertpapiere",
-    endDate: "10.09.2024",
-    onButtonClick: () => {
-      window.open("/docs/767 09.09.2024 Bankbestaetigung_Flatex_DM_2.pdf");
-    },
-  },
-  {
-    id: "612",
-    name: "Cashkonto – Daniel Mehner",
-    date: "02.12.2024",
-    buttonText: "Wertpapierabrechnung",
-    description: "Sammelabrechnung vom 23.02.2021",
-    endDate: "27.02.2021",
-    onButtonClick: () => {
-      window.open("/docs/Kauf1.pdf");
-    },
-  },
-  {
-    id: "605",
-    name: "Cashkonto – Daniel Mehner",
-    date: "02.12.2024",
-    buttonText: "Wertpapierabrechnung",
-    description: "Sammelabrechnung vom 23.02.2021",
-    endDate: "12.10.2021",
-    onButtonClick: () => {
-      window.open("/docs/kauf2.pdf");
-    },
-  },
-  {
-    id: "612",
-    name: "Cashkonto – Daniel Mehner",
-    date: "23.02.2021",
-    buttonText: "Wertpapierabrechnung",
-    description: "Sammelabrechnung vom 23.02.2021",
-    endDate: "27.02.2021",
-    onButtonClick: () => {
-      window.open("/docs/767 23.02.2021 Kauf_Gazprom_Daniel_Mehner_I.pdf");
-    },
-  },
-];
 
 const DanielDokument = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -104,56 +33,34 @@ const DanielDokument = () => {
     {
       id: "767",
       name: "Cashkonto – Daniel Mehner",
-      date: "02.12.2024",
+      date: "02.04.2020",
+      buttonText: "Wertpapierabrechnung",
+      description: "Wertpapierabrechnung ausländische Wertpapiere",
+      endDate: "10.09.2024",
+      onButtonClick: () => {
+        window.open("/docs/20200402_Kauf_Lukoil.pdf");
+      },
+    },
+    {
+      id: "336",
+      name: "Cashkonto – Daniel Mehner",
+      date: "18.02.2021",
       buttonText: "Bankbestätigung",
       description: "Bankbestätigung ausländische Wertpapiere",
       endDate: "10.09.2024",
       onButtonClick: () => {
-        window.open("/docs/Bank2.pdf");
+        window.open("/docs/336_20210218_Bankbestätigung_Gazprom_.pdf");
       },
     },
     {
-      id: "767",
+      id: "336",
       name: "Cashkonto – Daniel Mehner",
-      date: "09.09.2024",
-      buttonText: "Bankbestätigung",
-      description: "Bankbestätigung ausländische Wertpapiere",
+      date: "18.02.2021",
+      buttonText: "Wertpapierabrechnung",
+      description: "Wertpapierabrechnung ausländische Wertpapiere",
       endDate: "10.09.2024",
       onButtonClick: () => {
-        window.open("/docs/767 09.09.2024 Bankbestaetigung_Flatex_DM_2.pdf");
-      },
-    },
-    {
-      id: "612",
-      name: "Cashkonto – Daniel Mehner",
-      date: "02.12.2024",
-      buttonText: "Wertpapierabrechnung",
-      description: "Sammelabrechnung vom 23.02.2021",
-      endDate: "27.02.2021",
-      onButtonClick: () => {
-        window.open("/docs/Kauf1.pdf");
-      },
-    },
-    {
-      id: "605",
-      name: "Cashkonto – Daniel Mehner",
-      date: "02.12.2024",
-      buttonText: "Wertpapierabrechnung",
-      description: "Sammelabrechnung vom 23.02.2021",
-      endDate: "12.10.2021",
-      onButtonClick: () => {
-        window.open("/docs/kauf2.pdf");
-      },
-    },
-    {
-      id: "612",
-      name: "Cashkonto – Daniel Mehner",
-      date: "23.02.2021",
-      buttonText: "Wertpapierabrechnung",
-      description: "Sammelabrechnung vom 23.02.2021",
-      endDate: "27.02.2021",
-      onButtonClick: () => {
-        window.open("/docs/767 23.02.2021 Kauf_Gazprom_Daniel_Mehner_I.pdf");
+        window.open("/docs/336_20210218_Kauf_Gazprom.pdf");
       },
     },
   ];
@@ -204,8 +111,8 @@ const DanielDokument = () => {
                 <option value="***612">
                   ***612 Cashkonto - {userData.name}
                 </option>
-                <option value="***605">
-                  ***605 Cashkonto - {userData.name}
+                <option value="***336">
+                  ***336 Cashkonto - {userData.name}
                 </option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 bg-gray-400">
