@@ -7,12 +7,12 @@ import { FaChevronDown } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { IoReload } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
-// import { Link } from 'react-router-dom';
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const accountData = [
   {
+    id: "***307",
     name: "***307 Depot – Erich Rath",
     value: "360.968,60 EUR",
     available: "-",
@@ -20,6 +20,7 @@ const accountData = [
     pledge: "200.318,00 EUR",
   },
   {
+    id: "***297",
     name: "***297 Cashkonto – Erich Rath",
     value: "53.272,18 EUR",
     available: "53.272,18 EUR",
@@ -39,10 +40,9 @@ const ErichKontent = () => {
     <>
       <Header2 />
       <div className="lg:px-40 z-10 -mt-3">
-        {" "}
         <Navbar activeItem={activeItem} setActiveItem={setActiveItem} />
       </div>
-      <div className="px-4 sm:px-8 lg:px-40">
+      <div className=" px-8 lg:px-40">
         <div className="text-2xl sm:text-3xl mt-10 lg:mt-0 lg:pt-8">
           Konten & Depots
         </div>
@@ -100,7 +100,7 @@ const ErichKontent = () => {
                 className="grid grid-cols-12 gap-4 text-xs mt-4 bg-gray-100 p-2"
               >
                 <div className="col-span-7">
-                  <Link href="/Depot">{acc.name}</Link>
+                  <Link href={`/Depot?account=${acc.id}`}>{acc.name}</Link>
                 </div>
                 <div className="col-span-2 text-end">
                   {acc.value}

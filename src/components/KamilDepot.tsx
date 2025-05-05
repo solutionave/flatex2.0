@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { FaChevronDown } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
@@ -7,16 +7,25 @@ import { IoReload } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import Header2 from "./Header2";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "next/navigation";
 
 const KamilDepot = () => {
-  const currentDate = new Date();
-  const [selectedAccount, setSelectedAccount] = useState("***364");
+  const searchParams = useSearchParams();
+  const accountFromUrl = searchParams.get("account") || "***634"; // Default to ***634 if no account in URL
+  const [selectedAccount, setSelectedAccount] = useState(accountFromUrl);
   const userData = useSelector((state: any) => state.user);
+
+  const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
   const formattedDate = currentDate
     .toLocaleDateString("en-GB")
     .replace(/\//g, ".");
-  console.log("userData", userData);
+
+  // Update selectedAccount when URL changes
+  useEffect(() => {
+    setSelectedAccount(accountFromUrl);
+  }, [accountFromUrl]);
+
   return (
     <>
       <Header2 />
@@ -35,10 +44,12 @@ const KamilDepot = () => {
               {/* Dropdown */}
               <select
                 className="appearance-none text-gray-700 border rounded px-2 py-1 w-full pr-10"
+                value={selectedAccount}
                 onChange={(e) => setSelectedAccount(e.target.value)}
               >
-                <option value="***364">
-                  ***364 Cashkonto - {userData.name}
+                <option value="***634">***634 Depot - {userData.name}</option>
+                <option value="***493">
+                  ***493 Cashkonto - {userData.name}
                 </option>
               </select>
               {/* Custom Dropdown Icon */}
@@ -86,10 +97,10 @@ const KamilDepot = () => {
           </div>
         </div>
 
-        <hr className=" border-gray-200" />
+        <hr className="border-gray-200" />
 
         {/* Grid for Portfolio Table */}
-        <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth">
+        <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth hide-scrollbar">
           {/* Table Header */}
           <div className="grid grid-cols-7 gap-4 text-black text-xs font-bold p-2 min-w-[1200px]">
             <div className="col-span-2">
@@ -114,38 +125,9 @@ const KamilDepot = () => {
             <div className="col-span-1 text-end">
               Entw. abs.<p>Entw. in %</p>
             </div>
-            {/* <div className="col-span-2 text-end"></div> */}
           </div>
 
-          {/* Table Row 1 */}
-          {/* <div className="grid grid-cols-7 gap-4 text-xs mt-4 bg-gray-100 p-2 min-w-[1200px]">
-            <div className="col-span-2">
-              COCA-COLA CO., THE (CCC3)
-              <p>
-                <span className="text-orange-500">US1912161007 </span> | 850663
-              </p>
-              <p>Aktien</p>
-            </div>
-            <div className="col-span-1 text-end">
-              10.000,0000 Stk<p>59,090 EUR</p>
-              <p>ClearStream Nat.</p>
-            </div>
-            <div className="col-span-1 text-end">
-              Lang & Schwarz <p>{formattedDate} | 22:56</p>
-            </div>
-            <div className="col-span-1 text-end">
-              59,09 EUR <p className="text-red-500">-0,21</p>
-              <p className="text-red-500">-0,354 %</p>
-            </div>
-            <div className="col-span-1 text-end">
-              590.900,00 EUR <p>410.217,17 EUR </p>
-            </div>
-            <div className="col-span-1 text-end">
-              0,00 EUR <p>0,00 %</p>
-            </div>
-          </div> */}
-
-          {selectedAccount === "***364" && (
+          {selectedAccount === "***634" && (
             <>
               {/* BP PLC */}
               <div className="grid grid-cols-7 gap-4 text-xs mt-4 bg-gray-100 p-2 min-w-[1200px]">
@@ -215,6 +197,14 @@ const KamilDepot = () => {
                 </div>
               </div>
             </>
+          )}
+
+          {selectedAccount === "***493" && (
+            <div className="grid grid-cols-7 gap-4 text-xs mt-4 bg-gray-100 p-2 min-w-[1200px]">
+              <div className="col-span-7 text-center">
+                No holdings available for this account.
+              </div>
+            </div>
           )}
         </div>
       </div>

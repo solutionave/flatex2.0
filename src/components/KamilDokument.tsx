@@ -23,7 +23,7 @@ const KamilDokument = () => {
   const Dokumentdata = [
     {
       id: "634",
-      name: "Cashkonto – Erich Rath",
+      name: "Cashkonto – Kamil Davleev",
       date: "11.01.2020",
       buttonText: "Wertpapierabrechnung",
       description: "Wertpapierabrechnung ausländische Wertpapiere",
@@ -34,7 +34,7 @@ const KamilDokument = () => {
     },
     {
       id: "634",
-      name: "Cashkonto – Erich Rath",
+      name: "Cashkonto – Kamil Davleev",
       date: "25.01.2025",
       buttonText: "Bankbestätigung",
       description: "Bankbestätigung ausländische Wertpapiere",
@@ -154,7 +154,7 @@ const KamilDokument = () => {
         <hr className="border-t border-gray-200 mt-4 mb-1" />
 
         <div className="bg-white">
-          <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth">
+          <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth hide-scrollbar">
             <div className="grid grid-cols-12 gap-4 p-2 text-xs font-bold text-black min-w-[1200px]">
               <div className="col-span-1"></div>
               <div className="col-span-1"></div>

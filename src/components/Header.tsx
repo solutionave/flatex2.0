@@ -298,7 +298,7 @@ const Header = () => {
         isOpen={isShowModal}
         onRequestClose={handleCloseModal}
         contentLabel="Login"
-        className="modal lg:w-[70%] w-[80%]  bg-white shadow-lg max-h-[80%] overflow-y-scroll lg:overflow-y-auto"
+        className="modal lg:w-[70%] w-[80%]  bg-white shadow-lg max-h-[80%] overflow-y-scroll lg:overflow-y-auto hide-scrollbar"
         overlayClassName="overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
         ariaHideApp={false}
         role="dialog"

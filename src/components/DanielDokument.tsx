@@ -20,17 +20,6 @@ const DanielDokument = () => {
 
   const Dokumentdata = [
     {
-      id: "612",
-      name: "Cashkonto – Daniel Mehner",
-      date: "09.09.2024",
-      buttonText: "Bankbestätigung",
-      description: "Bankbestätigung ausländische Wertpapiere",
-      endDate: "10.09.2024",
-      onButtonClick: () => {
-        window.open("/docs/612 09.09.2024 Bankbestätigung_Flatex_DM_1.pdf");
-      },
-    },
-    {
       id: "767",
       name: "Cashkonto – Daniel Mehner",
       date: "02.04.2020",
@@ -61,6 +50,17 @@ const DanielDokument = () => {
       endDate: "10.09.2024",
       onButtonClick: () => {
         window.open("/docs/336_20210218_Kauf_Gazprom.pdf");
+      },
+    },
+    {
+      id: "612",
+      name: "Cashkonto – Daniel Mehner",
+      date: "09.09.2024",
+      buttonText: "Bankbestätigung",
+      description: "Bankbestätigung ausländische Wertpapiere",
+      endDate: "10.09.2024",
+      onButtonClick: () => {
+        window.open("/docs/612 09.09.2024 Bankbestätigung_Flatex_DM_1.pdf");
       },
     },
   ];
@@ -180,7 +180,7 @@ const DanielDokument = () => {
         <hr className="border-t border-gray-200 mt-4 mb-1" />
 
         <div className="bg-white">
-          <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth">
+          <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth hide-scrollbar">
             <div className="grid grid-cols-12 gap-4 p-2 text-xs font-bold text-black min-w-[1200px]">
               <div className="col-span-1"></div>
               <div className="col-span-1"></div>

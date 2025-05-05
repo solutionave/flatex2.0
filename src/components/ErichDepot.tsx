@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { FaChevronDown } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
@@ -7,16 +7,176 @@ import { IoReload } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import Header2 from "./Header2";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "next/navigation";
+
+interface UserState {
+  name: string;
+}
+
+interface Holding {
+  name: string;
+  isin: string;
+  wkn: string;
+  category: string;
+  quantity: string;
+  einstandskurs: string;
+  lagerst: string;
+  bourse: string;
+  date: string;
+  lastPrice: string;
+  priceChange: string;
+  priceChangePercent: string;
+  currentValue: string;
+  einstandswert: string;
+  developmentAbs: string;
+  developmentPercent: string;
+  changeColor: string;
+}
+
+interface AccountData {
+  depotbestand: string;
+  gebuchterSaldo: string;
+  verfugbar: string;
+  holdings: Holding[];
+}
 
 const ErichDepot = () => {
+  const searchParams = useSearchParams();
+  const initialAccount = searchParams.get("account") || "***307";
+  const [selectedAccount, setSelectedAccount] = useState(initialAccount);
+  const userData = useSelector((state: { user: UserState }) => state.user);
+
   const currentDate = new Date();
-  const [selectedAccount, setSelectedAccount] = useState("***307");
-  const userData = useSelector((state: any) => state.user);
   currentDate.setDate(currentDate.getDate() - 1);
   const formattedDate = currentDate
     .toLocaleDateString("en-GB")
     .replace(/\//g, ".");
-  console.log("userData", userData);
+
+  // Sample data for accounts
+  const accountData: { [key: string]: AccountData } = {
+    "***307": {
+      depotbestand: "8.309,35 EUR",
+      gebuchterSaldo: "1.894,90 EUR",
+      verfugbar: "1.894,90 EUR",
+      holdings: [
+        {
+          name: "AT & T INC.",
+          isin: "US00206R1023",
+          wkn: "A0HL9Z",
+          category: "Aktien",
+          quantity: "8.000 Stk.",
+          einstandskurs: "21,54 EUR",
+          lagerst: "Clearstream Nat.",
+          bourse: "Lang & Schwarz",
+          date: formattedDate,
+          lastPrice: "24,07 EUR",
+          priceChange: "+0,24",
+          priceChangePercent: "+1,00 %",
+          currentValue: "192.560,00 EUR",
+          einstandswert: "172.320,00 EUR",
+          developmentAbs: "20.240,00 EUR",
+          developmentPercent: "11,75 %",
+          changeColor: "text-green-600",
+        },
+        {
+          name: "Coca-Cola Co., The (CCC3)",
+          isin: "US1912161007",
+          wkn: "850663",
+          category: "Aktien",
+          quantity: "1.000,00 Stk",
+          einstandskurs: "56,55 EUR",
+          lagerst: "Clearstream Nat.",
+          bourse: "Lang & Schwarz",
+          date: formattedDate,
+          lastPrice: "62,9365 EUR",
+          priceChange: "-0,529",
+          priceChangePercent: "-0,84 %",
+          currentValue: "62.936,50 EUR",
+          einstandswert: "56.550,00 EUR",
+          developmentAbs: "6.386,50 EUR",
+          developmentPercent: "11,29 %",
+          changeColor: "text-green-600",
+        },
+        {
+          name: "iShares EM Dividend ETF",
+          isin: "IE00B652H904",
+          wkn: "A1JNZ9",
+          category: "ETF",
+          quantity: "988,12 Stk.",
+          einstandskurs: "10,04 EUR",
+          lagerst: "Clearstream Lux.",
+          bourse: "Lang & Schwarz",
+          date: formattedDate,
+          lastPrice: "12,91 EUR",
+          priceChange: "+0,20",
+          priceChangePercent: "+1,55 %",
+          currentValue: "12.756,62 EUR",
+          einstandswert: "9.920,72 EUR",
+          developmentAbs: "2.835,91 EUR",
+          developmentPercent: "28,59 %",
+          changeColor: "text-green-600",
+        },
+        {
+          name: "Kraft Heinz Co., The",
+          isin: "US5007541064",
+          wkn: "A14TU4",
+          category: "Aktien",
+          quantity: "3.602,00 Stk",
+          einstandskurs: "28,51 EUR",
+          lagerst: "Clearstream Nat.",
+          bourse: "Lang & Schwarz",
+          date: formattedDate,
+          lastPrice: "25,74 EUR",
+          priceChange: "-0,50",
+          priceChangePercent: "-1,94 %",
+          currentValue: "92.715,48 EUR",
+          einstandswert: "102.693,02 EUR",
+          developmentAbs: "-9.977,54 EUR",
+          developmentPercent: "-9,72 %",
+          changeColor: "text-red-500",
+        },
+      ],
+    },
+    "***297": {
+      depotbestand: "53.272,18 EUR",
+      gebuchterSaldo: "53.272,18 EUR",
+      verfugbar: "53.272,18 EUR",
+      holdings: [
+        {
+          name: "Sample Stock",
+          isin: "US1234567890",
+          wkn: "A1B2C3",
+          category: "Aktien",
+          quantity: "500 Stk.",
+          einstandskurs: "100,00 EUR",
+          lagerst: "Clearstream Nat.",
+          bourse: "Lang & Schwarz",
+          date: formattedDate,
+          lastPrice: "105,00 EUR",
+          priceChange: "+5,00",
+          priceChangePercent: "+5,00 %",
+          currentValue: "52.500,00 EUR",
+          einstandswert: "50.000,00 EUR",
+          developmentAbs: "2.500,00 EUR",
+          developmentPercent: "5,00 %",
+          changeColor: "text-green-600",
+        },
+      ],
+    },
+  };
+
+  // Validate selected account
+  useEffect(() => {
+    if (!accountData[initialAccount]) {
+      setSelectedAccount("***307"); // Fallback to default if invalid
+    } else {
+      setSelectedAccount(initialAccount);
+    }
+  }, [initialAccount]);
+
+  // Handle undefined userData.name
+  const userName = userData?.name || "User";
+
   return (
     <>
       <Header2 />
@@ -35,11 +195,11 @@ const ErichDepot = () => {
               {/* Dropdown */}
               <select
                 className="appearance-none text-gray-700 border rounded px-2 py-1 w-full pr-10"
+                value={selectedAccount}
                 onChange={(e) => setSelectedAccount(e.target.value)}
               >
-                <option value="***307">
-                  ***307 Cashkonto - {userData.name}
-                </option>
+                <option value="***307">***307 Depot – {userName}</option>
+                <option value="***297">***297 Cashkonto – {userName}</option>
               </select>
               {/* Custom Dropdown Icon */}
               <div className="absolute inset-y-0 right-0 flex items-center px-2 bg-gray-400 rounded-r">
@@ -53,19 +213,19 @@ const ErichDepot = () => {
             <p className="text-gray-700">
               Depotbestand:{" "}
               <span className="text-black font-semibold pl-10">
-                8.309,35 EUR
+                {accountData[selectedAccount].depotbestand}
               </span>
             </p>
             <p className="text-gray-700">
               Gebuchter Saldo:{" "}
               <span className="text-black font-semibold pl-10">
-                1.894,90 EUR
+                {accountData[selectedAccount].gebuchterSaldo}
               </span>
             </p>
             <p className="text-gray-700">
               Verfügbar:{" "}
               <span className="text-black font-semibold pl-10">
-                1.894,90 EUR
+                {accountData[selectedAccount].verfugbar}
               </span>
             </p>
           </div>
@@ -86,10 +246,10 @@ const ErichDepot = () => {
           </div>
         </div>
 
-        <hr className=" border-gray-200" />
+        <hr className="border-gray-200" />
 
         {/* Grid for Portfolio Table */}
-        <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth">
+        <div className="mt-6 bg-white p-4 w-full overflow-x-auto sm:overflow-x-hidden md:overflow-x-auto scroll-smooth hide-scrollbar">
           {/* Table Header */}
           <div className="grid grid-cols-7 gap-4 text-black text-xs font-bold p-2 min-w-[1200px]">
             <div className="col-span-2">
@@ -114,176 +274,50 @@ const ErichDepot = () => {
             <div className="col-span-1 text-end">
               Entw. abs.<p>Entw. in %</p>
             </div>
-            {/* <div className="col-span-2 text-end"></div> */}
           </div>
 
-          {/* Table Row 1 */}
-          {/* <div className="grid grid-cols-7 gap-4 text-xs mt-4 bg-gray-100 p-2 min-w-[1200px]">
-            <div className="col-span-2">
-              COCA-COLA CO., THE (CCC3)
-              <p>
-                <span className="text-orange-500">US1912161007 </span> | 850663
-              </p>
-              <p>Aktien</p>
-            </div>
-            <div className="col-span-1 text-end">
-              10.000,0000 Stk<p>59,090 EUR</p>
-              <p>ClearStream Nat.</p>
-            </div>
-            <div className="col-span-1 text-end">
-              Lang & Schwarz <p>{formattedDate} | 22:56</p>
-            </div>
-            <div className="col-span-1 text-end">
-              59,09 EUR <p className="text-red-500">-0,21</p>
-              <p className="text-red-500">-0,354 %</p>
-            </div>
-            <div className="col-span-1 text-end">
-              590.900,00 EUR <p>410.217,17 EUR </p>
-            </div>
-            <div className="col-span-1 text-end">
-              0,00 EUR <p>0,00 %</p>
-            </div>
-          </div> */}
-
-          {selectedAccount === "***307" && (
-            <>
-              {/* AT & T INC. */}
-              <div className="grid grid-cols-7 gap-4 text-xs mt-4 bg-gray-100 p-2 min-w-[1200px]">
-                <div className="col-span-2">
-                  AT & T INC.
-                  <p>
-                    <span className="text-orange-500">US00206R1023</span> |
-                    A0HL9Z
-                  </p>
-                  <p>Aktien</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  8.000 Stk.
-                  <p>21,54 EUR</p>
-                  <p>Clearstream Nat.</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  Lang & Schwarz
-                  <p>{formattedDate}</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  24,07 EUR
-                  <p className="text-green-600">+0,24</p>
-                  <p className="text-green-600">+1,00 %</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  192.560,00 EUR
-                  <p>172.320,00 EUR</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  <p className="text-green-600"> 20.240,00 EUR</p>
-                  <p className="text-green-600">11,75 %</p>
-                </div>
+          {/* Table Rows */}
+          {accountData[selectedAccount].holdings.map((holding, index) => (
+            <div
+              key={index}
+              className="grid grid-cols-7 gap-4 text-xs mt-4 bg-gray-100 p-2 min-w-[1200px]"
+            >
+              <div className="col-span-2">
+                {holding.name}
+                <p>
+                  <span className="text-orange-500">{holding.isin}</span> |{" "}
+                  {holding.wkn}
+                </p>
+                <p>{holding.category}</p>
               </div>
-
-              {/* Coca-Cola Co., The (CCC3) */}
-              <div className="grid grid-cols-7 gap-4 text-xs mt-2 bg-gray-100 p-2 min-w-[1200px]">
-                <div className="col-span-2">
-                  Coca-Cola Co., The (CCC3)
-                  <p>
-                    <span className="text-orange-500">US1912161007</span> |
-                    850663
-                  </p>
-                  <p>Aktien</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  1.000,00 Stk
-                  <p>56,55 EUR</p>
-                  <p>Clearstream Nat.</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  Lang & Schwarz
-                  <p>{formattedDate}</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  62,9365 EUR
-                  <p className="text-red-500">-0,529</p>
-                  <p className="text-red-500">-0,84 %</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  62.936,50 EUR
-                  <p>56.550,00 EUR</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  <p className="text-green-600">6.386,50 EUR</p>
-                  <p className="text-green-600">11,29 %</p>
-                </div>
+              <div className="col-span-1 text-end">
+                {holding.quantity}
+                <p>{holding.einstandskurs}</p>
+                <p>{holding.lagerst}</p>
               </div>
-
-              {/* iShares EM Dividend ETF */}
-              <div className="grid grid-cols-7 gap-4 text-xs mt-2 bg-gray-100 p-2 min-w-[1200px]">
-                <div className="col-span-2">
-                  iShares EM Dividend ETF
-                  <p>
-                    <span className="text-orange-500">IE00B652H904</span> |
-                    A1JNZ9
-                  </p>
-                  <p>ETF</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  988,12 Stk.
-                  <p>10,04 EUR</p>
-                  <p>Clearstream Lux.</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  Lang & Schwarz
-                  <p>{formattedDate}</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  12,91 EUR
-                  <p className="text-green-600">+0,20</p>
-                  <p className="text-green-600">+1,55 %</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  12.756,62 EUR
-                  <p>9.920,72 EUR</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  <p className="text-green-600"> 2.835,91 EUR</p>
-                  <p className="text-green-600">28,59 %</p>
-                </div>
+              <div className="col-span-1 text-end">
+                {holding.bourse}
+                <p>{holding.date}</p>
               </div>
-
-              {/* Kraft Heinz Co., The */}
-              <div className="grid grid-cols-7 gap-4 text-xs mt-2 bg-gray-100 p-2 min-w-[1200px]">
-                <div className="col-span-2">
-                  Kraft Heinz Co., The
-                  <p>
-                    <span className="text-orange-500">US5007541064</span> |
-                    A14TU4
-                  </p>
-                  <p>Aktien</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  3.602,00 Stk
-                  <p>28,51 EUR</p>
-                  <p>Clearstream Nat.</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  Lang & Schwarz
-                  <p>{formattedDate}</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  25,74 EUR
-                  <p className="text-red-500">-0,50</p>
-                  <p className="text-red-500">-1,94 %</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  92.715,48 EUR
-                  <p>102.693,02 EUR</p>
-                </div>
-                <div className="col-span-1 text-end">
-                  <p className="text-red-500">-9.977,54 EUR</p>
-                  <p className="text-red-500">-9,72 %</p>
-                </div>
+              <div className="col-span-1 text-end">
+                {holding.lastPrice}
+                <p className={holding.changeColor}>{holding.priceChange}</p>
+                <p className={holding.changeColor}>
+                  {holding.priceChangePercent}
+                </p>
               </div>
-            </>
-          )}
+              <div className="col-span-1 text-end">
+                {holding.currentValue}
+                <p>{holding.einstandswert}</p>
+              </div>
+              <div className="col-span-1 text-end">
+                <p className={holding.changeColor}>{holding.developmentAbs}</p>
+                <p className={holding.changeColor}>
+                  {holding.developmentPercent}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

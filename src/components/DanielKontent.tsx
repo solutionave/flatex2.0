@@ -7,95 +7,27 @@ import { FaChevronDown } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { IoReload } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
-// import { Link } from 'react-router-dom';
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
-
-const accountData = [
-  {
-    name: "***774 Depot – Daniel Mehner",
-    value: "645.099,13 EUR",
-    available: "-",
-    credit: "-",
-    pledge: "341.903,52 EUR",
-  },
-  {
-    name: "***767 Cashkonto – Daniel Mehner",
-    value: "125.064,91 EUR",
-    available: "125.064,91 EUR",
-    credit: "0,00 EUR",
-    pledge: "-",
-  },
-  {
-    name: "***612 Depot – Daniel Mehner",
-    value: "455.740,00 EUR",
-    available: "-",
-    credit: "-",
-    pledge: "244.278,04 EUR",
-  },
-  {
-    name: "***782 Cashkonto – Daniel Mehner",
-    value: "1.815,72 EUR",
-    available: "1.815,72 EUR",
-    credit: "0,00 EUR",
-    pledge: "-",
-  },
-  {
-    name: "***605 Depot – Daniel Mehner",
-    value: "226.267,22 EUR",
-    available: "-",
-    credit: "-",
-    pledge: "104.718,02 EUR",
-  },
-  {
-    name: "***618 Cashkonto – Daniel Mehner",
-    value: "812,13 EUR",
-    available: "812,13 EUR",
-    credit: "0,00 EUR",
-    pledge: "-",
-  },
-  {
-    name: "***881 Depot – Daniel Mehner",
-    value: "1.047.510,16 EUR",
-    available: "-",
-    credit: "-",
-    pledge: "560.013,18 EUR",
-  },
-  {
-    name: "***874 Cashkonto – Daniel Mehner",
-    value: "200,18 EUR",
-    available: "200,18 EUR",
-    credit: "0,00 EUR",
-    pledge: "-",
-  },
-  {
-    name: "***336 Depot – Daniel Mehner",
-    value: "25.753,95 EUR",
-    available: "-",
-    credit: "-",
-    pledge: "12.002,22 EUR",
-  },
-  {
-    name: "***329 Cashkonto – Daniel Mehner",
-    value: "52.052,23 EUR",
-    available: "52.052,23 EUR",
-    credit: "0,00 EUR",
-    pledge: "-",
-  },
-];
+import { accountData } from "@/shared/data";
 
 const DanielKonten = () => {
   const [activeItem, setActiveItem] = useState("");
+  const router = useRouter();
+  const userData = useSelector((state: any) => state.user);
+
   useEffect(() => {
     setActiveItem("konto");
   }, []);
-  const userData = useSelector((state: any) => state.user);
+
+  const handleAccountClick = (accountId: string) => {
+    router.push(`/Depot?accountId=${accountId}`);
+  };
 
   return (
     <>
       <Header2 />
       <div className="lg:px-40 z-10 -mt-3">
-        {" "}
         <Navbar activeItem={activeItem} setActiveItem={setActiveItem} />
       </div>
       <div className="px-4 sm:px-8 lg:px-40">
@@ -136,7 +68,7 @@ const DanielKonten = () => {
         <hr className="border-t border-gray-200 mt-4 mb-1" />
 
         {/* Grid for Portfolio Table */}
-        <div className="mt-6 bg-white p-2 w-full overflow-x-auto sm:overflow-x-auto md:overflow-x-auto scroll-smooth">
+        <div className="mt-6 bg-white p-2 w-full overflow-x-auto sm:overflow-x-auto md:overflow-x-auto scroll-smooth hide-scrollbar">
           {/* Table Header */}
           <div className="grid grid-cols-12 gap-4 text-black font-bold text-xs p-2 min-w-[1200px]">
             <div className="col-span-7">Konto</div>
@@ -156,7 +88,12 @@ const DanielKonten = () => {
                 className="grid grid-cols-12 gap-4 text-xs mt-4 bg-gray-100 p-2"
               >
                 <div className="col-span-7">
-                  <Link href="/Depot">{acc.name}</Link>
+                  <button
+                    onClick={() => handleAccountClick(acc.accountId)}
+                    className="text-left "
+                  >
+                    {acc.name}
+                  </button>
                 </div>
                 <div className="col-span-2 text-end">
                   {acc.value}
